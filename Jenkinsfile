@@ -34,7 +34,8 @@ pipeline {
     }
     stage('Deploy to Kubernetes'){
         steps{
-            bat 'D:/Sankar/Training/Docker+Kubernetes/REST-API/kubectl create -f deployment.yml'
+            bat 'cd D:/Sankar/Training/Docker+Kubernetes/REST-API/'
+            bat 'kubectl create -f deployment.yml'
        }
     }
   }
