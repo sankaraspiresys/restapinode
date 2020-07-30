@@ -32,10 +32,12 @@ pipeline {
         }
       }
     }
-    stage('Deploy to Kubernetes'){
-        steps{
-          sh 'kubectl create -f deployment.yml'
-       }
+    stage('Deploy App') {
+      steps {
+        script {
+          kubernetesDeploy(configs: "deployment.yml", kubeconfigId: "mykubeconfig")
+        }
+      }
     }
   }
 }
