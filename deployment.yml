@@ -1,0 +1,19 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: samplenodeapp
+spec:
+  selector:
+    matchLabels:
+      app: samplenodeapp
+  replicas: 4  
+  template:
+    metadata:
+      labels:
+        app: samplenodeapp
+    spec:
+      containers:
+      - name: samplenodeapp-container
+        image: sankardockerdev/node-web-app
+        ports:
+        - containerPort: 3000
