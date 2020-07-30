@@ -1,21 +1,16 @@
-pipeline {
-    agent any
-
+pipeline {  
+    environment {
+        registry = "sankardockerdev / samplenodeapp"
+        registryCredential = 'sankardockerdev'
+    }  
+    agent any  
     stages {
-        stage('Build') {
-            steps {
-                echo 'Building..'
+        stage('Building image') {
+        steps{
+            script {
+            docker.build registry + ":$BUILD_NUMBER"
             }
         }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
         }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
-    }
+  }
 }
