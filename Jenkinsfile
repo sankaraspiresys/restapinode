@@ -34,7 +34,7 @@ pipeline {
     }
     stage('Deploy to Kubernetes'){
         steps{
-            bat 'kubectl create -f deployment.yml'
+          sh 'kubectl create -f deployment.yml'
        }
     }
   }
